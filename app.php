@@ -26,14 +26,16 @@
 
     function handle($request){
 
-      $pattern = "/^\/*([a-z0-9]+)+\/*([a-z0-9]+)*\/*([a-z\/]+)*/i";
-      preg_match_all($pattern, $request, $url_match, PREG_SET_ORDER);
+      $uri = $request['REQUEST_URI'];
 
-      $url_match = $url_match[0];
+      $pattern = "/^\/*([a-z0-9]+)+\/*([a-z0-9]+)*\/*([a-z\/]+)*/i";
+      preg_match_all($pattern, $uri, $url_match, PREG_SET_ORDER);
+
+      $url_match = $url_match;
 
 
       $fullpath = array_key_exists(0, $url_match) ? $url_match[0] : null;
-      $model    = array_key_exists(1, $url_match) ? $url_match[1] : null;
+      $model    = array_key_exists(1, $url_match) ? $url_match[1] : 'dashboard';
       $method   = array_key_exists(2, $url_match) ? $url_match[2] : 'index';
       $args     = array_key_exists(3, $url_match) ? $url_match[3] : null;
 

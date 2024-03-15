@@ -5,6 +5,6 @@
   $app = new App();
 
   $app->init();
-  $app->handle($_REQUEST['path']);
+  $app->handle($_SERVER);
 
 ?>
