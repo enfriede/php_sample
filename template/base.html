@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sample App</title>
+
+
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/template/AdminLTE3/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/template/AdminLTE3/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="/template/AdminLTE3/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="/template/AdminLTE3/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="/template/AdminLTE3/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/template/AdminLTE3/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="/template/AdminLTE3/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="/template/AdminLTE3/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="/template/AdminLTE3/plugins/daterangepicker/daterangepicker.css">
+
+
+
+  </head>
+
+
+<body class="sidebar-mini layout-fixed sidebar-collapse ">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+
+
+    <!-- Navbar -->
+      {% include 'topbar-menu.html'%}
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar main-sidebar-custom sidebar-dark-teal elevation-2">
+      {% include 'sidebar-menu.html'%}
+    </aside>
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+        {% block header %}{% endblock %}
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+        {% block body %}{% endblock %}
+        </div>
+      </section>
+      <!-- /.content -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+
+    <footer class="main-footer">
+
+      <div class="px-3 py-1">
+      {% block footer %}
+        
+      {% endblock %}
+      </div>
+
+      <!--
+        <div class="float-right d-none d-sm-block">
+          <b>Version</b> 3.2.0-rc
+        </div>
+        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+      -->
+    </footer>
+
+
+  </div>
+  <!-- ./wrapper -->
+
+
+
+
+
+  <!-- Bootstrap 4 -->
+    <script src="/template/AdminLTE3/plugins/jquery/jquery.min.js"></script>
+
+  <script src="/template/AdminLTE3/dist/js/adminlte.min.js"></script>
+  <script src="/template/AdminLTE3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/template/AdminLTE3/plugins/inputmask/jquery.inputmask.min.js"></script>
+
+  <script src="/template/AdminLTE3/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="/template/AdminLTE3/plugins/moment/moment.min.js"></script>
+
+  <script src="/template/AdminLTE3/plugins/daterangepicker/daterangepicker.js"></script>
+  <script src="/template/AdminLTE3/plugins/select2/js/select2.min.js"></script>
+
+  {% block scripts %}{% endblock %}
+
+
+
+</html>

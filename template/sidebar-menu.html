@@ -1,0 +1,70 @@
+<!-- Brand Logo -->
+<a href="/dashboard" class="brand-link">
+  <i class="brand-image fas fa-code-branch pl-1 pt-2"></i>
+  <span class="brand-text font-weight-light">{{ config.PROJECT_NAME | default('Home') }}</span>
+</a>
+
+<!-- Sidebar -->
+<div class="sidebar">
+
+  <!-- Sidebar user (optional) -->
+
+
+  <!-- Sidebar Menu -->
+  <nav class="mt-2">
+
+    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-flat nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
+      <!-- Add icons to the links using the .nav-icon class
+           with font-awesome or any other icon font library -->
+
+
+
+      <li class="nav-item {% if request.path.startswith('/dashboard') %}menu-open{% endif %}">
+        <a class="nav-link {% if request.path.startswith('/dashboard') %}active{% endif %}" href="#">
+          <i class="nav-icon fas fa-home"></i>
+          <p>Home<i class="right fas fa-angle-left"></i></p>
+        </a>
+
+        <ul class="nav nav-treeview">
+
+          {% set url = '/dashboard' %}
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>dashboard</p>
+            </a>
+          </li>
+
+          {% set url = '/dashboard/page1' %}
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>page1</p>
+            </a>
+          </li>
+
+
+        </ul>
+      </li>
+
+
+      {% set url = '/contact' %}
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}">
+          <i class="far fa-id-card nav-icon"></i>
+          <p>Contacts</p>
+        </a>
+      </li>
+
+
+
+    </ul>
+  </nav>
+  <!-- /.sidebar-menu -->
+</div>
+
+
+<div class="sidebar sidebar-custom">
+  <a href="/template/AdminLTE3/index.html" class="btn ml-2" target="_blank"><i class="fas fa-book-open"></i></a>
+</div>
+<!-- /.sidebar-custom -->
