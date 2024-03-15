@@ -31,8 +31,9 @@
       $pattern = "/^\/*([a-z0-9]+)+\/*([a-z0-9]+)*\/*([a-z\/]+)*/i";
       preg_match_all($pattern, $uri, $url_match, PREG_SET_ORDER);
 
-      $url_match = $url_match;
-
+      if($url_match){
+        $url_match = $url_match[0];
+      }
 
       $fullpath = array_key_exists(0, $url_match) ? $url_match[0] : null;
       $model    = array_key_exists(1, $url_match) ? $url_match[1] : 'dashboard';
