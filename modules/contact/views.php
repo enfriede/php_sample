@@ -21,7 +21,6 @@
 
 
     function index($args){
-      $args = $this->split_args($args);
 
       echo $this->render('contacts.html', ['name' => 'Contacts']);
     }

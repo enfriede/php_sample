@@ -5,6 +5,6 @@
   $app = new App();
 
   $app->init();
-  $app->handle($_SERVER);
+  $app->run();
 
 ?>

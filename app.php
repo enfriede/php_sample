@@ -24,46 +24,39 @@
     }
 
 
-    function handle($request){
 
-      $uri = $request['REQUEST_URI'];
+    function req_demux2modules($request){
 
-      $pattern = "/^\/*([a-z0-9]+)+\/*([a-z0-9]+)*\/*([a-z\/]+)*/i";
-      preg_match_all($pattern, $uri, $url_match, PREG_SET_ORDER);
+      $path = $request['path'];
+      unset($request['path']);
+      $data = $request;
 
-      if($url_match){
-        $url_match = $url_match[0];
+      $path_expl = explode('/', $path, 2);
+
+      $module_name = array_splice($path_expl, 0, 1)[0];
+      $sub_uri = $path_expl ? $path_expl[0] : null;
+
+
+      if( in_array($module_name, $this->modules) ){
+
+        $module_class = '\modules\\'.$module_name.'\\view';
+        $module = new $module_class();
+
+        $module->handle($sub_uri, $data);
+
       }
-
-      $fullpath = array_key_exists(0, $url_match) ? $url_match[0] : null;
-      $model    = array_key_exists(1, $url_match) ? $url_match[1] : 'dashboard';
-      $method   = array_key_exists(2, $url_match) ? $url_match[2] : 'index';
-      $args     = array_key_exists(3, $url_match) ? $url_match[3] : null;
-
-
-      if( in_array($model, $this->modules) ){
-
-        $class = '\modules\\'.$model.'\\view';
-        $modules = new $class();
-
-        $method = trim($method, '/');
-        $args = trim($args, '/');
-
-        if( method_exists($modules, $method) )
-        {
-          $modules->$method($args);
-        }
-        else
-        {
-          echo "method do not exists";
-        }
-      }else{
-
-        echo file_get_contents(dirname(__file__) .'/'.$request);
-
+      else
+      {
+        echo "module not loaded or not exists";
       }
 
     }
+
+
+    function run(){
+      $this->req_demux2modules($_REQUEST);
+    }
+
 
   }
 
